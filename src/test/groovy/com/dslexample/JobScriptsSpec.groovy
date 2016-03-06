@@ -19,6 +19,9 @@ class JobScriptsSpec extends Specification {
         new File('resources').eachFileRecurse(FileType.FILES) {
             jm.availableFiles[it.path.replaceAll('\\\\', '/')] = it.text
         }
+        new File('pipelines').eachFileRecurse(FileType.FILES) {
+            jm.availableFiles[it.path.replaceAll('\\\\', '/')] = it.text
+        }
 
         when:
         DslScriptLoader.runDslEngine file.text, jm
