@@ -6,7 +6,7 @@ contributor(jobsCtx, {
 })
 
 //The global script scope
-def ctx = context(pathRegexp: /.*\/resources\/pipeline_.*groovy/)
+def ctx = context(pathRegexp: /.*\/pipelines\/.*groovy/)
 contributor(ctx) {
     method(name: 'build', type: 'Object', params: [job:'java.lang.String'], doc: 'Build a job')
     method(name: 'build', type: 'Object', namedParams: [parameter(name: 'job', type: 'java.lang.String'), parameter(name: 'parameters', type: 'Map'), parameter(name: 'propagate', type: 'boolean'), parameter(name: 'quietPeriod', type: 'java.lang.Integer'), parameter(name: 'wait', type: 'boolean'), ], doc: 'Build a job')

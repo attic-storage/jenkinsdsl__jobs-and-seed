@@ -22,6 +22,9 @@ MemoryJobManagement jm = new MemoryJobManagement()
 new File('resources').eachFileRecurse(FileType.FILES) {
     jm.availableFiles[it.path.replaceAll('\\\\', '/')] = it.text
 }
+new File('pipelines').eachFileRecurse(FileType.FILES) {
+    jm.availableFiles[it.path.replaceAll('\\\\', '/')] = it.text
+}
 
 println '\nProcessing DSL files:\n'
 

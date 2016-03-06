@@ -5,6 +5,14 @@ sourceSets {
         groovy {
             srcDirs 'jobs'
         }
+        resources {
+            srcDirs 'resources'
+        }
+    }
+    pipelines {
+        groovy {
+            srcDirs 'pipelines'
+        }
     }
 }
 

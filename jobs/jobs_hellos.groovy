@@ -3,7 +3,7 @@ folder 'hellos'
 workflowJob('hellos/hello_world') {
     definition {
         cps {
-            script(readFileFromWorkspace('resources/pipeline_hello_world.groovy'))
+            script(readFileFromWorkspace('pipelines/hello_world.groovy'))
             sandbox()
         }
     }
@@ -12,7 +12,7 @@ workflowJob('hellos/hello_world') {
 workflowJob('hellos/hello_golo') {
     definition {
         cps {
-            script(readFileFromWorkspace('resources/pipeline_hello_golo.groovy'))
+            script(readFileFromWorkspace('pipelines/hello_golo.groovy'))
             sandbox()
         }
     }
@@ -26,7 +26,7 @@ persons.each {
     workflowJob("hellos/hello_${person}") {
         definition {
             cps {
-                script(readFileFromWorkspace('resources/pipeline_hello_person.groovy'))
+                script(readFileFromWorkspace('pipelines/hello_person.groovy'))
                 sandbox()
             }
         }
