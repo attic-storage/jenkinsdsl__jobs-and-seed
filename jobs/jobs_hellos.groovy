@@ -3,11 +3,7 @@ folder 'hellos'
 workflowJob('hellos/hello_world') {
     definition {
         cps {
-            script '''
-node {
-    echo 'Hello world!!'
-}
-'''
+            script(readFileFromWorkspace('resources/pipeline_hello_world.groovy'))
             sandbox()
         }
     }
@@ -16,13 +12,7 @@ node {
 workflowJob('hellos/hello_golo') {
     definition {
         cps {
-            script '''
-node {
-    git 'https://github.com/rlespinasse/jenkinsdsl__project-maven.git'
-    sh "mvn"
-    sh "java -jar target/Golo-0.0.1-SNAPSHOT-jar-with-dependencies.jar"
-}
-'''
+            script(readFileFromWorkspace('resources/pipeline_hello_golo.groovy'))
             sandbox()
         }
     }
@@ -31,17 +21,17 @@ node {
 def persons = ['ludovic', 'aurelien', 'antoine', 'romain', 'nicolas', 'etc...']
 
 persons.each {
+    String person = it
 
-    workflowJob("hellos/hello_${it}") {
+    workflowJob("hellos/hello_${person}") {
         definition {
             cps {
-                script """
-node {
-    echo 'Hello ${it}!!'
-}
-"""
+                script(readFileFromWorkspace('resources/pipeline_hello_person.groovy'))
                 sandbox()
             }
+        }
+        environmentVariables {
+            env('PERSON', person)
         }
     }
 }
